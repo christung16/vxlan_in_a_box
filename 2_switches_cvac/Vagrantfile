@@ -1,0 +1,76 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+
+    # Deploy 2 Nodes with a link between them
+    config.ssh.shell = "run bash"
+    config.ssh.insert_key = false
+    # private key location for WSL
+#    config.ssh.private_key_path = "/home/yitung/.ssh/insecure_private_key"
+    # private key location for windows 10
+    config.ssh.private_key_path = "C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\insecure_private_key"
+
+    config.vm.boot_timeout = 300
+    config.vm.define "n9k1" do |node|
+        node.vm.box =  "nxosv/9.2.3"
+
+        node.vm.network :forwarded_port, guest: 22, host: 41022, id: 'ssh', auto_correct: true
+        node.vm.network :forwarded_port, guest: 80, host: 41080, id: 'http', auto_correct: true
+        node.vm.network :forwarded_port, guest: 443, host: 41443, id: 'restconf-ssl', auto_correct: true
+
+        node.vm.synced_folder '.', 'C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\n9k1_config\\', disabled: true
+        node.vm.provider "virtualbox" do |vb|
+        #   # Display the VirtualBox GUI when booting the machine
+        #   vb.gui = true
+        #
+        #   # Customize the amount of memory on the VM:
+           vb.memory = "6144"
+        
+        # Disconnect serial port to avoid conflict
+#           vb.customize ['modifyvm', :id, '--uart1', '0x3F8', 4, '--uartmode1', 'disconnected']
+#           vb.customize ['modifyvm', :id, '--uart2', '0x2F8', 3, '--uartmode2', 'disconnected']
+           vb.customize "pre-boot", [ "storageattach", :id, "--storagectl", "SATA", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\n9k1.iso", ]
+
+           vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-vms"]
+           vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-vms"]
+        end
+
+        # eth1/1 connected to link2,
+        # auto-config not supported.
+        node.vm.network :private_network, virtualbox__intnet: "n9k12-eth11", mac: "080027760101", auto_config: false
+        node.vm.network :private_network, virtualbox__intnet: "n9k1-eth12", mac: "080027760102", auto_config: false
+    end
+
+    config.vm.define "n9k2" do |node|
+        node.vm.box =  "nxosv/9.2.3"
+        node.vm.network :forwarded_port, guest: 22, host: 42022, id: 'ssh', auto_correct: true
+        node.vm.network :forwarded_port, guest: 80, host: 42080, id: 'http', auto_correct: true
+        node.vm.network :forwarded_port, guest: 443, host: 42443, id: 'restconf-ssl', auto_correct: true
+
+        node.vm.synced_folder '.', 'C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\n9k2_config', disabled: true
+        node.vm.provider "virtualbox" do |vb|
+        #   # Display the VirtualBox GUI when booting the machine
+        #   vb.gui = true
+        #
+        #   # Customize the amount of memory on the VM:
+           vb.memory = "6144"
+        
+        # Disconnect serial port to avoid conflict
+           vb.customize ['modifyvm', :id, '--uart1', '0x3F8', 4, '--uartmode1', 'disconnected']
+           vb.customize ['modifyvm', :id, '--uart2', '0x2F8', 3, '--uartmode2', 'disconnected']
+           vb.customize "pre-boot", [ "storageattach", :id, "--storagectl", "SATA", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\n9k2.iso", ]
+           vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-vms"]
+           vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-vms"]
+        end
+
+        # eth1/1 connected to link2,
+        # auto-config not supported.
+        node.vm.network :private_network, virtualbox__intnet: "n9k12-eth11", mac: "080027760201", auto_config: false
+        node.vm.network :private_network, virtualbox__intnet: "n9k2-eth12", mac: "080027760202", auto_config: false
+    end
+end
