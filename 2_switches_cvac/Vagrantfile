@@ -13,7 +13,8 @@ Vagrant.configure("2") do |config|
     # private key location for WSL
 #    config.ssh.private_key_path = "/home/yitung/.ssh/insecure_private_key"
     # private key location for windows 10
-    config.ssh.private_key_path = "C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\insecure_private_key"
+#    config.ssh.private_key_path = "C:\\Users\\yitung\\PycharmProjects\\vxlan_in_a_box\\2_switches_cvac\\insecure_private_key"
+    config.ssh.private_key_path = ".\\insecure_private_key"
 
     config.vm.boot_timeout = 300
     config.vm.define "n9k1" do |node|
@@ -23,7 +24,7 @@ Vagrant.configure("2") do |config|
         node.vm.network :forwarded_port, guest: 80, host: 41080, id: 'http', auto_correct: true
         node.vm.network :forwarded_port, guest: 443, host: 41443, id: 'restconf-ssl', auto_correct: true
 
-        node.vm.synced_folder '.', 'C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\n9k1_config\\', disabled: true
+        node.vm.synced_folder '.', '.\\n9k1_config\\', disabled: true
         node.vm.provider "virtualbox" do |vb|
         #   # Display the VirtualBox GUI when booting the machine
         #   vb.gui = true
@@ -34,7 +35,7 @@ Vagrant.configure("2") do |config|
         # Disconnect serial port to avoid conflict
 #           vb.customize ['modifyvm', :id, '--uart1', '0x3F8', 4, '--uartmode1', 'disconnected']
 #           vb.customize ['modifyvm', :id, '--uart2', '0x2F8', 3, '--uartmode2', 'disconnected']
-           vb.customize "pre-boot", [ "storageattach", :id, "--storagectl", "SATA", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\n9k1.iso", ]
+           vb.customize "pre-boot", [ "storageattach", :id, "--storagectl", "SATA", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", ".\\n9k1.iso", ]
 
            vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-vms"]
            vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-vms"]
@@ -52,7 +53,7 @@ Vagrant.configure("2") do |config|
         node.vm.network :forwarded_port, guest: 80, host: 42080, id: 'http', auto_correct: true
         node.vm.network :forwarded_port, guest: 443, host: 42443, id: 'restconf-ssl', auto_correct: true
 
-        node.vm.synced_folder '.', 'C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\n9k2_config', disabled: true
+        node.vm.synced_folder '.', '.\\n9k2_config', disabled: true
         node.vm.provider "virtualbox" do |vb|
         #   # Display the VirtualBox GUI when booting the machine
         #   vb.gui = true
@@ -63,7 +64,7 @@ Vagrant.configure("2") do |config|
         # Disconnect serial port to avoid conflict
            vb.customize ['modifyvm', :id, '--uart1', '0x3F8', 4, '--uartmode1', 'disconnected']
            vb.customize ['modifyvm', :id, '--uart2', '0x2F8', 3, '--uartmode2', 'disconnected']
-           vb.customize "pre-boot", [ "storageattach", :id, "--storagectl", "SATA", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", "C:\\Users\\yitung\\PycharmProjects\\2_switches_cvac\\n9k2.iso", ]
+           vb.customize "pre-boot", [ "storageattach", :id, "--storagectl", "SATA", "--port", "1", "--device", "0", "--type", "dvddrive", "--medium", ".\\n9k2.iso", ]
            vb.customize ["modifyvm", :id, "--nicpromisc2", "allow-vms"]
            vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-vms"]
         end
