@@ -1,6 +1,6 @@
 # vxlan_in_a_box
 
-This project is to create two nx-osv instance and run vxlan between them. Connecting two linux guest system and they can connect together.
+This project is to create two nx-osv instances and run vxlan between them. Connecting two linux guest system and they can connect together.
 ALL in a box (assuming you have at least 16GB (more is better) and descent CPU (mine is i7-8650U)
 
 youtube: 
