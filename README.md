@@ -1,9 +1,15 @@
 # vxlan_in_a_box
 
+Inspired by NetDevOps Live
+I’m thinking if it is possible to build a VXLAN/EVPN network in my notebook so that I can test/code the network whenever/wherever
+Now, I can carry my network on the plane or in the submarine
+
+youtube: https://youtu.be/GM7hpvsSFh8
+
+***************************************************
 This project is to create two nx-osv instances and run vxlan between them. Connecting two linux guest system and they can connect together.
 ALL in a box (assuming you have at least 16GB (more is better) and descent CPU (mine is i7-8650U)
 
-youtube: 
 
 Technology used:
 1. nx-osv v9.2.3 customized box image
