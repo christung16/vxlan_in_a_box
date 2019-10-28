@@ -25,3 +25,7 @@ Problem overcome:
 
 Caveat:
 1. NX-OSv 9.2.3 required at least 6GB memroy instead of 4GB. 4GB wont bootup properly since v9.2.3
+
+CVAC:
+mkisofs -output nxosconfig.iso -l --relaxed-filenames --iso-level 2 <file(s) to add>
+URL: https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/nx-osv/configuration/guide/b_Cisco_Nexus_9000v.pdf
