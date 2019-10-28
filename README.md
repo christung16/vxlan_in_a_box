@@ -25,8 +25,20 @@ Problem overcome:
 
 Caveat:
 1. NX-OSv 9.2.3 required at least 6GB memroy instead of 4GB. 4GB wont bootup properly since v9.2.3
+2. CVAC: CVAC won't work if you use the box image directly download from CCO, you have to follow the steps below to build a new box image in order to accept the CVAC
 
-CVAC:
+    Step:
+    a.	Vagrant up (use the box image download from software.cisco.com)
+    b.	Modify the boot system image to the proper one ((config)# boot system bootflash:///……)
+    c.	Copy run start
+    d.	Vagrant halt -f
+    e.	Vagrant package –output nxosv-new.box
+    f.	Vagrant box add –name nxosv-new nxosv-new.box
+ 
+By using a new box image, the CVAC works now.
+I can use a new image to build a vxlan_in_a_box with just vagrant up once.
+
+CVAC: Build a iso for configuration file
 
 Linux: mkisofs -output nxosconfig.iso -l --relaxed-filenames --iso-level 2 <file(s) to add>
 URL: https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/nx-osv/configuration/guide/b_Cisco_Nexus_9000v.pdf
