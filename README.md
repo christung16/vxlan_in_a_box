@@ -28,12 +28,19 @@ Caveat:
 2. CVAC: CVAC won't work if you use the box image directly download from CCO, you have to follow the steps below to build a new box image in order to accept the CVAC
 
     Step:
+    
     a.	Vagrant up (use the box image download from software.cisco.com)
+    
     b.	Modify the boot system image to the proper one ((config)# boot system bootflash:///……)
+    
     c.	Copy run start
+    
     d.	Vagrant halt -f
+    
     e.	Vagrant package –output nxosv-new.box
+    
     f.	Vagrant box add –name nxosv-new nxosv-new.box
+    
  
 By using a new box image, the CVAC works now.
 I can use a new image to build a vxlan_in_a_box with just vagrant up once.
