@@ -51,7 +51,7 @@ CVAC: Build a iso for configuration file
   Linux: mkisofs -output nxosconfig.iso -l --relaxed-filenames --iso-level 2 <file(s) to add>
 URL: https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/nx-osv/configuration/guide/b_Cisco_Nexus_9000v.pdf
 
-## Steps to build the vxlan in a box Lab:
+## Steps to build the vxlan in a box Lab [Refer to the video](https://youtu.be/GM7hpvsSFh8):
 
    1. open a cmd prompt: "vagrant box list" to check the vx-osv box image and centos image are ready
 
