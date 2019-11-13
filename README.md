@@ -55,10 +55,10 @@ URL: https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/
 
    1. open a cmd prompt: "vagrant box list" to check the vx-osv box image and centos image are ready
 
-### Example:
------------------------
-centos/7                        (virtualbox, 1811.02)
-nxosv/9.2.2-final               (virtualbox, 0)
+          ### Example:
+          -----------------------
+          centos/7                        (virtualbox, 1811.02)
+          nxosv/9.2.2-final               (virtualbox, 0)
 
    2. edit .\2_switches_cvac\Vagrant: Modify "node.vx.box" to boot the required nx-osv images
    3. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two vx-osv VM
