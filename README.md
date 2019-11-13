@@ -62,7 +62,7 @@ URL: https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/
           nxosv/9.2.2-final               (virtualbox, 0)
 
    2. edit .\2_switches_cvac\Vagrant: Modify "node.vx.box" to boot the required nx-osv images
-   3. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two vx-osv VM
+   3. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two NX-OSv VM
    4. edit .\centos7\Vagrant: Modify "node.vx.box" to boot the required centos7 image
    5. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two centos7 VM
    6. open a cmd prompt: "vagrant ssh n9k1" to check vxlan status
