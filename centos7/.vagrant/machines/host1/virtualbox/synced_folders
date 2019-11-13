@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"C:/Users/yitung/PycharmProjects/vxlan_in_a_box/centos7","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
