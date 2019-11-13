@@ -1,6 +1,6 @@
 # vxlan_in_a_box
 
-Inspired by NetDevOps Live
+Inspired by [NetDevOps Live](https://developer.cisco.com/netdevops/live/)
 I’m thinking if it is possible to build a VXLAN/EVPN network in my notebook so that I can test/code the network whenever/wherever
 Now, I can carry my network on the plane or in the submarine
 
