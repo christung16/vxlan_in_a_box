@@ -29,11 +29,16 @@ ALL in a box (assuming you have at least 16GB (more is better) and descent CPU (
 
   Steps to customized a nxosv box image:
     
->    a.	Vagrant up (use the box image download from software.cisco.com)    
+>    a.	Vagrant up (use the box image download from (https://software.cisco.com))
+
 >    b.	Modify the boot system image to the proper one ((config)# boot system bootflash:///……)
+
 >    c.	Copy run start
+
 >    d.	Vagrant halt -f
+
 >    e.	Vagrant package –output nxosv-new.box
+
 >    f.	Vagrant box add –name nxosv-new nxosv-new.box
     
  
