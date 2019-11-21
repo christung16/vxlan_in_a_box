@@ -50,51 +50,51 @@ Overlay:
 ##  Installation steps:
 ### 1. Customized a NX-OSv box image  
 
-        a.	Vagrant up (use the box image download from [CCO](https://software.cisco.com))
-        b.	Modify the boot system image to the proper one ((config)# boot system bootflash:///……)
-        c.	Copy run start
-        d.	Vagrant halt -f
-        e.	Vagrant package –output nxosv-new.box
-        f.	Vagrant box add –name nxosv-new nxosv-new.box
+1.	Vagrant up (use the box image download from [CCO](https://software.cisco.com))
+2.	Modify the boot system image to the proper one ((config)# boot system bootflash:///……)
+3.	Copy run start
+4.	Vagrant halt -f
+5.	Vagrant package –output nxosv-new.box
+6.	Vagrant box add –name nxosv-new nxosv-new.box
     
 ### 2. Build a CVAC ISO for startup configuration file
  
-         By using a new box image, the CVAC works now. Reference link: [NX-OSv Configuration](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/nx-osv/configuration/guide/b_Cisco_Nexus_9000v.pdf) The new image to build a vxlan_in_a_box with just vagrant up once.
+By using a new box image, the CVAC works now. Reference link: [NX-OSv Configuration](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/nx-osv/configuration/guide/b_Cisco_Nexus_9000v.pdf) The new image to build a vxlan_in_a_box with just vagrant up once.
          Linux: mkisofs -output nxosconfig.iso -l --relaxed-filenames --iso-level 2 <file(s) to add>
 
 ##  Configuration
-     1. open a cmd prompt: "vagrant box list" to check the vx-osv box image and centos image are ready
+1. open a cmd prompt: "vagrant box list" to check the vx-osv box image and centos image are ready
 
           ### Example:
           -----------------------
           centos/7                        (virtualbox, 1811.02)
           nxosv/9.2.2-final               (virtualbox, 0)
      
-     2. Edit .\2_switches_cvac\Vagrant: Modify "node.vx.box" to boot the required nx-osv images
-     3. Edit .\centos7\Vagrant: Modify "node.vx.box" to boot the required centos7 image
+ 2. Edit .\2_switches_cvac\Vagrant: Modify "node.vx.box" to boot the required nx-osv images
+ 3. Edit .\centos7\Vagrant: Modify "node.vx.box" to boot the required centos7 image
      
 ##  Usage 
-     [Refer to the video](https://youtu.be/GM7hpvsSFh8?t=29)
+[Refer to the video](https://youtu.be/GM7hpvsSFh8?t=29)
 
-     1. cd .\2_switches_cvac
-     2. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two NX-OSv VM
-     3. cd .\centos7
-     4. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two centos7 VM
+1. cd .\2_switches_cvac
+2. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two NX-OSv VM
+3. cd .\centos7
+4. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two centos7 VM
      
 ##  How to test 
-     [Refer to the video](https://youtu.be/GM7hpvsSFh8?t=128)
+[Refer to the video](https://youtu.be/GM7hpvsSFh8?t=128)
 
-     1. open a cmd prompt: "vagrant ssh n9k1" to check vxlan status
-     2. open a cmd prompt: "vagrant ssh n9k2" to check vxlan status
-     3. open a cmd prompt: "vagrant ssh host1" to do ping test to host2: "ping 192.168.0.12"
+1. open a cmd prompt: "vagrant ssh n9k1" to check vxlan status
+2. open a cmd prompt: "vagrant ssh n9k2" to check vxlan status
+3. open a cmd prompt: "vagrant ssh host1" to do ping test to host2: "ping 192.168.0.12"
 
 ## Known issues:
 
-     1. NX-OSv 9.2.3 required at least 6GB memroy instead of 4GB. 4GB wont bootup properly since v9.2.3
-     2. CVAC: CVAC won't work if you use the box image directly download from CCO, you have to follow the steps below to build a new box image in order to accept the CVAC
+1. NX-OSv 9.2.3 required at least 6GB memroy instead of 4GB. 4GB wont bootup properly since v9.2.3
+2. CVAC: CVAC won't work if you use the box image directly download from CCO, you have to follow the steps below to build a new box image in order to accept the CVAC
 
 ## Getting help
-     If you have questions, concerns, bug reports, etc., please create an issue against this repository.
+If you have questions, concerns, bug reports, etc., please create an issue against this repository.
 
 ----
 
