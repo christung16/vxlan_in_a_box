@@ -61,7 +61,8 @@ While we learn Vxlan, we usually need two spine and two leaf and some hosts conn
 ### 2. Build a CVAC ISO for startup configuration file
  
 By using a new box image, the CVAC works now. Reference link: [NX-OSv Configuration](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/nx-osv/configuration/guide/b_Cisco_Nexus_9000v.pdf) The new image to build a vxlan_in_a_box with just vagrant up once.
-         Linux: mkisofs -output nxosconfig.iso -l --relaxed-filenames --iso-level 2 <file(s) to add>
+
+Linux: mkisofs -output nxosconfig.iso -l --relaxed-filenames --iso-level 2 <file(s) to add>
 
 ##  Configuration
 1. open a cmd prompt: "vagrant box list" to check the vx-osv box image and centos image are ready
