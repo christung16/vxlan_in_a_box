@@ -12,11 +12,12 @@ ALL in a box (assuming you have at least 16GB (more is better) and descent CPU (
 
 ## Use Case Description
 While we learn Vxlan, we usually need two spine and two leaf and some hosts connecting to it. Usually a physical environment or VIRL is required. This lab can build a simplified Vxlan inside your notebook just using vagrant/virtualbox. You can test/learn some Vxlan features:
-Underlay:
+
+**Underlay:**
   - Layer 3
   - OSPF
 
-Overlay:
+**Overlay:**
   - Anycast GW
   - BGP
   - L3VNI
@@ -51,7 +52,7 @@ Overlay:
 ### 1. Customized a NX-OSv box image  
 
 1.	Vagrant up (use the box image download from [CCO](https://software.cisco.com))
-2.	Modify the boot system image to the proper one ((config)# boot system bootflash:///……)
+2.	Modify the boot system image to the proper one *(config)# boot system bootflash:///……*
 3.	Copy run start
 4.	Vagrant halt -f
 5.	Vagrant package –output nxosv-new.box
