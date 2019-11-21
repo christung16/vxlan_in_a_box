@@ -42,10 +42,10 @@ Overlay:
 
 ###  Pre-requisite:
 
-    1. Virtual Box
-    2. Vagrant
-    3. NX-OSv box image, Download from (https://software.cisco.com)
-    4. vagrant linux host eg centos/7 or ubuntu/xenial64
+1. Install Virtual Box
+2. Install Vagrant
+3. Download NX-OSv box image, Download from (https://software.cisco.com)
+4. Download vagrant linux host eg centos/7 or ubuntu/xenial64
   
 ##  Installation steps:
 ### 1. Customized a NX-OSv box image  
@@ -70,8 +70,8 @@ By using a new box image, the CVAC works now. Reference link: [NX-OSv Configurat
           centos/7                        (virtualbox, 1811.02)
           nxosv/9.2.2-final               (virtualbox, 0)
      
- 2. Edit .\2_switches_cvac\Vagrant: Modify "node.vx.box" to boot the required nx-osv images
- 3. Edit .\centos7\Vagrant: Modify "node.vx.box" to boot the required centos7 image
+2. Edit .\2_switches_cvac\Vagrant: Modify "node.vx.box" to boot the required nx-osv images
+3. Edit .\centos7\Vagrant: Modify "node.vx.box" to boot the required centos7 image
      
 ##  Usage 
 [Refer to the video](https://youtu.be/GM7hpvsSFh8?t=29)
@@ -130,7 +130,3 @@ In the event you make use of 3rd party code, it is required by some licenses, an
 
 1. [NetDevOps Live](https://developer.cisco.com/netdevops/live/)
 2. [Vagrant for Network Programmability](https://developer.cisco.com/codeexchange/github/repo/hpreston/vagrant_net_prog/)
-
-
-
-
