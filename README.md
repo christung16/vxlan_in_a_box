@@ -41,28 +41,25 @@ Overlay:
 ## Installation:
 
 ###  Pre-requisite:
+
     1. Virtual Box
     2. Vagrant
-    3. NX-OSv box image (Download from (https://software.cisco.com))
+    3. NX-OSv box image, Download from (https://software.cisco.com)
     4. vagrant linux host eg centos/7 or ubuntu/xenial64
   
 ##  Installation steps:
 ### 1. Customized a NX-OSv box image  
->     a.	Vagrant up (use the box image download from (https://software.cisco.com))
-      
->     b.	Modify the boot system image to the proper one ((config)# boot system bootflash:///……)
-      
->     c.	Copy run start
 
->     d.	Vagrant halt -f
-
->     e.	Vagrant package –output nxosv-new.box
-
->     f.	Vagrant box add –name nxosv-new nxosv-new.box
+        a.	Vagrant up (use the box image download from [CCO](https://software.cisco.com))
+        b.	Modify the boot system image to the proper one ((config)# boot system bootflash:///……)
+        c.	Copy run start
+        d.	Vagrant halt -f
+        e.	Vagrant package –output nxosv-new.box
+        f.	Vagrant box add –name nxosv-new nxosv-new.box
     
 ### 2. Build a CVAC ISO for startup configuration file
  
-         By using a new box image, the CVAC works now. Reference link: NX-OSv Configuration(https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/nx-osv/configuration/guide/b_Cisco_Nexus_9000v.pdf) The new image to build a vxlan_in_a_box with just vagrant up once.
+         By using a new box image, the CVAC works now. Reference link: [NX-OSv Configuration](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/nx-osv/configuration/guide/b_Cisco_Nexus_9000v.pdf) The new image to build a vxlan_in_a_box with just vagrant up once.
          Linux: mkisofs -output nxosconfig.iso -l --relaxed-filenames --iso-level 2 <file(s) to add>
 
 ##  Configuration
@@ -76,14 +73,16 @@ Overlay:
      2. Edit .\2_switches_cvac\Vagrant: Modify "node.vx.box" to boot the required nx-osv images
      3. Edit .\centos7\Vagrant: Modify "node.vx.box" to boot the required centos7 image
      
-##  Usage [Refer to the video](https://youtu.be/GM7hpvsSFh8?t=29)
+##  Usage 
+     [Refer to the video](https://youtu.be/GM7hpvsSFh8?t=29)
 
      1. cd .\2_switches_cvac
      2. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two NX-OSv VM
      3. cd .\centos7
      4. open a cmd prompt: "vagrant up" and wait a few minutes to boot up two centos7 VM
      
-##  How to test [Refer to the video](https://youtu.be/GM7hpvsSFh8?t=128)
+##  How to test 
+     [Refer to the video](https://youtu.be/GM7hpvsSFh8?t=128)
 
      1. open a cmd prompt: "vagrant ssh n9k1" to check vxlan status
      2. open a cmd prompt: "vagrant ssh n9k2" to check vxlan status
